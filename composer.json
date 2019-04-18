@@ -17,11 +17,11 @@
 		"issues": "https://github.com/Kdyby/ElasticSearch/issues"
 	},
 	"require": {
-		"nette/di": "~2.4",
-		"tracy/tracy": "~2.4",
-		"nette/utils": "~2.4",
+		"nette/di": "^3.0",
+		"tracy/tracy": "^3.0",
+		"nette/utils": "^3.0",
 
-		"ruflin/elastica": "~5.0|~6.0"
+		"ruflin/elastica": "^6.0"
 	},
 	"require-dev": {
 		"nette/application": "~2.4",
