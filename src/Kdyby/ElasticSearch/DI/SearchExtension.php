@@ -68,11 +68,11 @@ class SearchExtension extends Nette\DI\CompilerExtension
 		$config = $this->getConfig($this->defaults + $this->elasticaDefaults);
 
 		if (empty($config['connections'])) {
-			$config['connections']['default'] = Config\Helpers::merge(array_intersect_key($config, $this->connectionDefaults), $builder->expand($this->connectionDefaults));
+			$config['connections']['default'] = Config\Helpers::merge(array_intersect_key($config, $this->connectionDefaults), $this->connectionDefaults);
 
 		} else {
 			foreach ($config['connections'] as $name => $connectionConfig) {
-				$config['connections'][$name] = Config\Helpers::merge($connectionConfig, $builder->expand($this->connectionDefaults));
+				$config['connections'][$name] = Config\Helpers::merge($connectionConfig, $this->connectionDefaults);
 			}
 		}
 
