@@ -57,7 +57,7 @@ class Panel implements IBarPanel
 	 *
 	 * @return string
 	 */
-	public function getTab()
+	public function getTab() : ?string
 	{
 		$img = Html::el('')->addHtml(file_get_contents(__DIR__ . '/logo.svg'));
 		$tab = Html::el('span')->title('ElasticSearch')->addHtml($img);
@@ -78,7 +78,7 @@ class Panel implements IBarPanel
 	/**
 	 * @return string
 	 */
-	public function getPanel()
+	public function getPanel() : ?string
 	{
 		if (!$this->queries) {
 			return NULL;
