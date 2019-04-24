@@ -65,7 +65,7 @@ class SearchExtension extends Nette\DI\CompilerExtension
 	public function loadConfiguration()
 	{
 		$builder = $this->getContainerBuilder();
-		$config = $this->getConfig($this->defaults + $this->elasticaDefaults);
+		$config = Config\Helpers::merge($this->getConfig(), $this->defaults + $this->elasticaDefaults);
 
 		if (empty($config['connections'])) {
 			$config['connections']['default'] = Config\Helpers::merge(array_intersect_key($config, $this->connectionDefaults), $this->connectionDefaults);
@@ -90,7 +90,7 @@ class SearchExtension extends Nette\DI\CompilerExtension
 
 		$elasticaConfig = array_intersect_key($config, $this->elasticaDefaults);
 		$elastica = $builder->addDefinition($this->prefix('elastica'))
-			->setClass('Kdyby\ElasticSearch\Client', [$elasticaConfig]);
+            		->setFactory('Kdyby\ElasticSearch\Client', [$elasticaConfig]);
 
 		if ($config['debugger']) {
 			$builder->addDefinition($this->prefix('panel'))
@@ -119,4 +119,8 @@ class SearchExtension extends Nette\DI\CompilerExtension
 		};
 	}
 
+	protected function expand($temp)
+    	{
+        	return Helpers::expand($temp, $this->getContainerBuilder()->parameters, true);
+    	}
 }
