@@ -14,12 +14,12 @@
 	],
 	"require": {
 		"nette/di": "^3.0",
-		"tracy/tracy": "^3.0",
 		"nette/utils": "^3.0",
 
 		"ruflin/elastica": "^6.0"
 	},
 	"require-dev": {
+		"tracy/tracy": "^2.6 || ^3.0",
 		"nette/tester": "^2.0"
 	},
 	"autoload": {
